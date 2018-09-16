@@ -1,5 +1,6 @@
 ﻿using Infrastructure.Log.Concrete;
 using System;
+using System.Threading;
 
 namespace DesignPatterns.Implementation
 {
@@ -8,17 +9,35 @@ namespace DesignPatterns.Implementation
     /// </summary>
     public class Singleton
     {
+        private static readonly object obj = new object();
         private static Singleton uniqueInstance;
+
+        /// <summary>
+        /// 实例化次数
+        /// </summary>
+        public static int instantiationsCount = 0;
+
+        /// <summary>
+        /// 请求调用实例化次数
+        /// </summary>
+        public static int requestCount = 0;
 
         private Singleton() { }
 
         public static Singleton GetUniqueInstance()
         {
+            Interlocked.Increment(ref requestCount);
+
             if (uniqueInstance == null)
             {
-                uniqueInstance = new Singleton();
-
-                new LogHelper().WriteLog("testtt");
+                lock (obj)
+                {
+                    if (uniqueInstance == null)
+                    {
+                        uniqueInstance = new Singleton();
+                        instantiationsCount++; 
+                    }
+                }                
             }
 
             return uniqueInstance;
