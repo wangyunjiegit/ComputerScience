@@ -1,4 +1,4 @@
-using DesignPatterns.Implementation;
+ï»¿using DesignPatterns.Implementation;
 using System;
 using System.Threading.Tasks;
 using Xunit;
@@ -6,7 +6,7 @@ using Xunit;
 namespace DesignPatterns.UnitTest
 {
     /// <summary>
-    /// µ¥Àı²âÊÔ:È·±£Ò»¸öÀàÖ»ÓĞÒ»¸öÊµÀı£¬²¢Ìá¹©¸ÃÊµÀıµÄÈ«¾Ö·ÃÎÊµã¡£
+    /// å•ä¾‹æµ‹è¯•:ç¡®ä¿ä¸€ä¸ªç±»åªæœ‰ä¸€ä¸ªå®ä¾‹ï¼Œå¹¶æä¾›è¯¥å®ä¾‹çš„å…¨å±€è®¿é—®ç‚¹ã€‚
     /// </summary>
     public class SingletonTest
     {
@@ -17,7 +17,7 @@ namespace DesignPatterns.UnitTest
             {                
                 Task.Run(() => {
                     var instance = Singleton.GetUniqueInstance();
-                    var pause = "this is pause";
+                    //var pause = "this is pause";
                 });
             }            
         }
